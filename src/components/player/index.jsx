@@ -18,6 +18,6 @@ export default function Player({ skin }) {
       });
 
     return (
-    <Person sprite={`/sprites/${skin}.png`} data={data} step={step} dir={dir} position={position} />
+    <Person sprite={`/sprites/${skin}.png`} data={data} step={step} dir={dir} position={position} style={{position: "absolute"}} />
     );
   }

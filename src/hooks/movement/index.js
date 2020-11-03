@@ -1,9 +1,9 @@
 import {useState} from "react"
 
 export default function Movement(maxSteps) {
-    const [position, setPos] = useState({x:0, y:0});
     const [dir, setDir] = useState(0);
     const [step, setStep] = useState(0);
+    const [position, setPos] = useState({ x:0, y:0 });
     const directions = {
         down: 0, 
         left: 1,
@@ -22,7 +22,8 @@ export default function Movement(maxSteps) {
       }
 
       function move(dir) {
-          console.dir(directions[dir])
+          if (!directions.hasOwnProperty(dir)) return;
+
           setDir(previous => {
               if(directions[dir] === previous) moving(dir)
               return directions[dir];
