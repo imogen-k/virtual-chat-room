@@ -3,7 +3,7 @@ import {useState} from "react"
 export default function Movement(maxSteps) {
     const [dir, setDir] = useState(0);
     const [step, setStep] = useState(0);
-    const [position, setPos] = useState({ x:0, y:0 });
+    const [position, setPos] = useState({ x:500, y:200 });
     const directions = {
         down: 0, 
         left: 1,

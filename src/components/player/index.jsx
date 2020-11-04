@@ -4,7 +4,7 @@ import KeyPressed from "../../hooks/keys";
 import Movement from "../../hooks/movement";
 
 export default function Player({ skin }) {
-    const { dir, step, move, position } = Movement(3);
+    const { dir, step, move, position } = Movement(1);
 
     const data = {
         h: 32,
@@ -13,8 +13,12 @@ export default function Player({ skin }) {
 
 
       KeyPressed((e) => {
-        move(e.key.replace("Arrow", "").toLowerCase());
-        e.preventDefault();
+        const dir = e.key.replace("Arrow", "").toLowerCase()
+        move(dir);
+        if(dir === "up" || dir === "down" || dir === "left" || dir === "right") {
+          e.preventDefault();
+        }
+  
       });
 
     return (
