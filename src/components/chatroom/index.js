@@ -42,7 +42,7 @@ class Chatroom extends React.Component {
 
         
   
-        // client.onopen = () => client.send(
+        client.onopen(
         this.setState({
             chats: this.state.chats.concat([{
                 username: "Imo",
@@ -52,7 +52,7 @@ class Chatroom extends React.Component {
         }, () => {
             ReactDOM.findDOMNode(this.refs.msg).value = "";
         })
-        // )
+        )
     }
 
     render() {
