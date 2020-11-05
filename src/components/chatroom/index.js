@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
 import Message from '../message';
+import { w3cwebsocket as W3CWebSocket } from "websocket";
+
+const client = new W3CWebSocket('wss://192.168.0.102:8000');
+
 
 class Chatroom extends React.Component {
     constructor(props) {
@@ -17,8 +20,13 @@ class Chatroom extends React.Component {
         this.submitMessage = this.submitMessage.bind(this);
     }
 
+
     componentDidMount() {
         this.scrollToBot();
+        client.onopen = () => {
+            console.log('WebSocket Client connected');
+            console.log(this.state.chats);
+          };
     }
 
     componentDidUpdate() {
@@ -32,6 +40,9 @@ class Chatroom extends React.Component {
     submitMessage(e) {
         e.preventDefault();
 
+        
+  
+        // client.onopen = () => client.send(
         this.setState({
             chats: this.state.chats.concat([{
                 username: "Imo",
@@ -40,7 +51,8 @@ class Chatroom extends React.Component {
             }])
         }, () => {
             ReactDOM.findDOMNode(this.refs.msg).value = "";
-        });
+        })
+        // )
     }
 
     render() {

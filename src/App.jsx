@@ -1,10 +1,15 @@
-import React from 'react';
+
 import Player from './components/player';
 import Background from './components/background';
 import Chatroom from './components/chatroom';
+import React, { Component } from 'react'
 
-export default function App() {
+export default class App extends Component {
+
+render() {
+  
   return (
+    
     <div className="textbox-container">
       <Chatroom />
       <div className="zone-container">
@@ -12,5 +17,6 @@ export default function App() {
         <Background />
       </div>
     </div>
-  );
+  )
+}
 }
